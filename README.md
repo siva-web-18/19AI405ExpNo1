@@ -41,70 +41,57 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
-<h1>PROGRAM:</h1>
+<h1>Program:</h1>
 ```
 import random
-
-class VacuumCleanerAgent:
-    def __init__(self):  # Initialize the agent's state (location and dirt status)
-        self.location = "A"  # Initial location (can be "A" or "B")
-        self.dirt_status = {
-            "A": True,
-            "B": True,
-        }  # Initial dirt status (False means no dirt)
-        self.performance = 0
-
-    def move_left(self):  # Move the agent to the left if possible
-        if self.location == "B":
-            self.location = "A"
-
-    def move_right(self):  # Move the agent to the right if possible
-        if self.location == "A":
-            self.location = "B"
-
-    def suck_dirt(self):  # Suck dirt in the current location if there is dirt
-        if self.dirt_status[self.location]:
-            self.dirt_status[self.location] = False
-            print(f"Sucked dirt in location {self.location}")
-
-    def do_nothing(self):  # Do nothing
-        pass
-
-    def perform_action(self, action):  # Perform the specified action
-        if action == "left":
-            self.performance = self.performance - 1
-            self.move_left()
-        elif action == "right":
-            self.performance = self.performance - 1
-            self.move_right()
-        elif action == "suck":
-            self.performance = self.performance + 10
-            self.suck_dirt()
-        elif action == "nothing":
-            self.do_nothing()
-        else:
-            print("Invalid action")
-
-    def print_status(self):  # Print the current status of the agent
-        print(f"Location: {self.location}, Dirt Status: {self.dirt_status}, ", end="")
-        print(f"Perfomance Measure: {self.performance}")
-
-
-# Example usage:
-agent = VacuumCleanerAgent()
-# Move the agent, suck dirt, and do nothing
-agent.perform_action("left")
-agent.print_status()
-agent.perform_action("suck")
-agent.print_status()
-agent.perform_action("right")
-agent.print_status()
-agent.perform_action("suck")
-agent.print_status()
-agent.perform_action("nothing")
-agent.print_status()
+class MedicinePrescribingAgent:
+ def __init__(self):
+ self.rooms = {
+ "Room 1": random.uniform(97.0, 102.5),
+ "Room 2": random.uniform(97.0, 102.5)
+ }
+ self.performance = 0
+ self.current_room = random.choice(list(self.rooms.keys()))
+ def sense(self):
+ """Sense current room and patient's temperature."""
+ temperature = self.rooms[self.current_room]
+ print(f"\nAgent is in {self.current_room}")
+ print(f"Patient Temperature: {temperature:.1f}°F")
+ return temperature
+ def prescribe_medicine(self, temperature):
+ """Treat patient if temperature is above 98.5°F."""
+ if temperature > 98.5:
+ print("Patient has fever.")
+ print("Medicine Prescribed.")
+ self.performance += 1
+ else:
+ print("Patient is healthy.")
+ print("No medicine required.")
+ def move(self):
+ """Move to the other room."""
+ previous_room = self.current_room
+ self.current_room = "Room 2" if self.current_room == "Room 1" else "Room
+1"
+ print(f"\nMoving from {previous_room} to {self.current_room}")
+ self.performance -= 1
+ def run(self):
+ print("=== Medicine Prescribing Agent ===")
+ temperature = self.sense()
+ self.prescribe_medicine(temperature)
+ self.move()
+ temperature = self.sense()
+ self.prescribe_medicine(temperature)
+ print("\nFinal Performance:", self.performance)
+agent = MedicinePrescribingAgent()
+agent.run()
 ```
-# result
+<h1>output</h1>
+```
+<img width="710" height="312" alt="Screenshot 2026-10-26 084937" src="https://github.com/user-attachments/assets/6e194b6d-b9ab-4f1a-901f-b754ba581d4e" />
+```
+<h1>RESULT</h1>
+```
+The program o find the PEAS description for the given AI problem and develop an AI agent is succesfully excicuted.
 ```
 <img width="892" height="166" alt="Screenshot 2026-10-26 082124" src="https://github.com/user-attachments/assets/fc510354-5f3c-434a-b017-320109c650e9" />
 ```
