@@ -41,7 +41,12 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+
+
+
+
 <h1>Program:</h1>
+
 ```
 import random
 class MedicinePrescribingAgent:
@@ -85,6 +90,9 @@ class MedicinePrescribingAgent:
 agent = MedicinePrescribingAgent()
 agent.run()
 ```
+
+
+
 <h1>output</h1>
 ```
 <img width="710" height="312" alt="Screenshot 2026-10-26 084937" src="https://github.com/user-attachments/assets/6e194b6d-b9ab-4f1a-901f-b754ba581d4e" />
@@ -92,6 +100,4 @@ agent.run()
 <h1>RESULT</h1>
 ```
 The program o find the PEAS description for the given AI problem and develop an AI agent is succesfully excicuted.
-```
-<img width="892" height="166" alt="Screenshot 2026-10-26 082124" src="https://github.com/user-attachments/assets/fc510354-5f3c-434a-b017-320109c650e9" />
-```
+
